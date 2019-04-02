@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class Dao {
 	protected Connection openConnection() {
 		Connection con = null;
-		
+		//ESTABLISHING THE DATABASE CONNECTION
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp_db", "root", "");
@@ -22,6 +22,7 @@ public class Dao {
 		return con;
 	}
 	
+	//STATEMENT INTERFACE CREATED
 	protected Statement openStatement(Connection con) {
 		Statement stmt = null;
 		
@@ -34,6 +35,7 @@ public class Dao {
 		return stmt;
 	}
 	
+	//CLOSING THE RESULTSET
 	protected void closeResultSet(ResultSet rs) {
 		try {
 			if(rs != null) {
@@ -44,6 +46,8 @@ public class Dao {
 		}
 	}
 	
+	
+	//CLOSING THE STATEMENT
 	protected void closeStatement(Statement stmt) {
 		try {
 			if(stmt != null) {
@@ -54,6 +58,8 @@ public class Dao {
 		}
 	}
 	
+	
+	//CLOSING THE CONNECTION
 	protected void closeConnection(Connection con) {
 		try {
 			if(con != null) {
