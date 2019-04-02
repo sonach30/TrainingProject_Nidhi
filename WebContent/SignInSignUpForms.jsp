@@ -1,26 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE-edge">
 <meta name="viewport" content="width-device-width, initial-scale=1">
 <title>SignInsignUp</title>
+
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+
+<!-- INCLUDING EXTERNAL CSS -->
 <link rel="stylesheet" href="css/custom.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!-- STYLESHEET FOR ICONS -->
-<link rel='stylesheet'
-	href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
-	integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ'
-	crossorigin='anonymous'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 
 <!-- STYLESHEET FOR ICONS &BUTTONS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
@@ -91,29 +90,32 @@
 		<!-- Row 2 Ends -->
 
 		<!-- Row 3 Starts -->
-		<div class="row row3" style="background-image:url(images/texture-bw.png)">
-				<br>
-				
-				<!-- COL1 STARTS -->
-				<div class="col-md-4 cc">
-					<b class="lbl1">NEW ACCOUNT / SIGN IN</b>
-					<br>
-				</div>
-				<!-- COL1 ENDS -->
-				
-				
-				<!-- COL2 STARTS -->
-				<div class="col-md-4 ccrr">
-					<h5><a class="links">HOME</a> / NEW ACCOUNT / SIGN IN</h5>
-					<br>
-				</div>
-				<!-- COL2 ENDS -->
-				
+		<div class="row row3"
+			style="background-image: url(images/texture-bw.png)">
 			<br>
-			<br>
-			
+
+			<!-- COL1 STARTS -->
+			<div class="col-md-4 cc">
+				<b class="lbl1">NEW ACCOUNT / SIGN IN</b> <br>
 			</div>
+			<!-- COL1 ENDS -->
+
+
+			<!-- COL2 STARTS -->
+			<div class="col-md-4 ccrr">
+				<h5>
+					<a class="links">HOME</a> / NEW ACCOUNT / SIGN IN
+				</h5>
+				<br>
+			</div>
+			<!-- COL2 ENDS -->
+
+			<br> <br>
+
+		</div>
 		<!-- Row 3 Ends -->
+		
+		
 		<!-- Row 4 Starts -->
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -128,8 +130,7 @@
 				<p style="font-size: 16px;">With registration with us new world
 					of fashion,fantastic discounts and much more is open to you!The
 					whole process will not take more than a minute.</p>
-				<br>
-				<br>
+				<br> <br>
 				<p style="color: gray">If you have any queries feel free to
 					contact us, out customer service is center is working 24/7</p>
 
@@ -152,29 +153,32 @@
 						style="margin-left: 200px; color: green;">Register</button>
 					<hr>
 				</form>
-			
-			
-			 <%	
+				<!-- REGISTRATION FORM ENDS -->
+				
+				<!-- CHECKING THE SUCCESS OF REGISTRATION PROCESS -->
+				<%	
+						//CHECKING IF SESSION ALREADY EXIST
 						if(!session.isNew())
 						{
 							 int i = (int)session.getAttribute("SUCCESS");
 							if(i==1)
 							{	
 					%>
-								<div class="alert alert-success" role="alert">
-  									Registration Successful
-								</div>
-					<% 
+					<!-- IF REGITRATION SUCCESSFUL -->
+				<div class="alert alert-success" role="alert">Registration
+					Successful</div>
+				<% 
 							}
 							else if(i==-1)
 							{
 					%>
-								<div class="alert alert-danger" role="alert">
-  									Registration Unsuccessful !!!!!<br>
-  									Try Again
-  								
-								</div>
-					<% 
+					
+				<!-- IF REGITRATION UNSUCCESSFUL -->
+				<div class="alert alert-danger" role="alert">
+					Registration Unsuccessful !!!!!<br> Try Again
+
+				</div>
+				<% 
 							}									
 						}
 					
@@ -194,7 +198,7 @@
 					and recommadations</p>
 
 
-				<!--  LOGIN FORM -->
+				<!--  LOGIN FORM STARTS -->
 				<form action="log" method="post">
 					<div class="form-group">
 						<label for="email" class="mrgrey">Email address:</label> <input
@@ -208,27 +212,26 @@
 						style="margin-left: 200px; color: green;">LOG IN</button>
 					<hr>
 				</form>
-				 <%	
+				<!-- LOGIN FORM ENDS -->
+				<%	
 						if(!session.isNew())
 						{
 							 int i = (int)session.getAttribute("SUCCESS");
 							if(i==2)
 							{	
 					%>
-								<div class="alert alert-success" role="alert">
-  									Login Successful
-								</div>
-					<% 
+				<div class="alert alert-success" role="alert">Login Successful
+				</div>
+				<% 
 							}
 							else if(i==-2)
 							{
 					%>
-								<div class="alert alert-danger" role="alert">
-  									INVALID CREDENTIALS !!!!!<br>
-  									Try Again
-  								
-								</div>
-					<% 
+				<div class="alert alert-danger" role="alert">
+					INVALID CREDENTIALS !!!!!<br> Try Again
+
+				</div>
+				<% 
 							}									
 						}
 					
@@ -236,84 +239,97 @@
 			</div>
 		</div>
 		<!-- Row 3 Ends -->
-		
 
-			
-	 	<!-- Row 5 Starts -->
-	 	<div class="row row1">
-	 		<br><br>
-	 		
-	 		<!-- COL1 STARTS -->
+
+		<!-- FOOTER STARTS -->
+		<!-- ROW 5 STARTS -->
+		<div class="row row1">
+			<br>
+			<br>
+
+			<!-- ROW 5 COL 1 STARTS -->
 			<div class="col-md-3 cc">
-	 			<b>About Us</b>
-	 			<p class="mrsil">Pellentesque habitant morbi tristique
-		senectus et netus malesuada fames
-		ac turpis egestas.</p>
-	 			<hr width="100%">
-				<b>Join Our Monthly Newsletter</b><br>
-	 			<input type ="text" size="30"><button class="button2 send"><span class="glyphicon glyphicon-send"></span></button>
-	 			<br><br>
-	 		</div>
-	 		<!-- COL1 ENDS -->
-	 		
-	 		<!-- COL2 STARTS -->
-	 		<div class="col-md-3">
-				<b>BLOG<br><br>
-				<img src="images/detailsquare1.jpg" height="40" width="40">&nbsp;&nbsp;  BLOG POST NAME<br><br>
-				<img src="images/detailsquare2.jpg" height="40" width="40">&nbsp;&nbsp;  BLOG POST NAME<br><br>
-				<img src="images/detailsquare3.jpg" height="40" width="40">&nbsp;&nbsp;  VERY VERY LONG BLOG POST NAME<br><br></b>
-			</div>
-			<!-- COL2 ENDS -->
-			
-			<!-- COL3 STARTS -->
-			<div class="col-md-2">
-				<b>Contact</b>
+				<b>About Us</b>
+				<p class="mrsil">Pellentesque habitant morbi tristique senectus
+					et netus malesuada fames ac turpis egestas.</p>
+				<hr width="100%">
+				<b>Join Our Monthly Newsletter</b><br> <input type="text"
+					size="30">
+				<button class="button2 send">
+					<span class="glyphicon glyphicon-send"></span>
+				</button>
 				<br>
-				<p class="mrsil">TechAspect Solutions Pvt Ltd<br>3rd floor, N Heights, Plot no 38, Hitech City Phase II,<br> Madhapur, Hyderabad, Telangana<br>India, Tel : +91 40 66217777</p>
+				<br>
+			</div>
+			<!-- ROW 5 COL 1 ENDS -->
+
+			<!-- ROW 5 COL 2 STARTS -->
+			<div class="col-md-3">
+				<b>BLOG<br>
+				<br> <img src="images/detailsquare1.jpg" height="40" width="40">&nbsp;&nbsp;
+					BLOG POST NAME<br>
+				<br> <img src="images/detailsquare2.jpg" height="40" width="40">&nbsp;&nbsp;
+					BLOG POST NAME<br>
+				<br> <img src="images/detailsquare3.jpg" height="40" width="40">&nbsp;&nbsp;
+					VERY VERY LONG BLOG POST NAME<br>
+				<br></b>
+			</div>
+			<!-- ROW 5 COL 2 ENDS -->
+
+			<!-- ROW 5 COL 3 STARTS -->
+			<div class="col-md-2">
+				<b>Contact</b> <br>
+				<p class="mrsil">
+					TechAspect Solutions Pvt Ltd<br>3rd floor, N Heights, Plot no
+					38, Hitech City Phase II,<br> Madhapur, Hyderabad, Telangana<br>India,
+					Tel : +91 40 66217777
+				</p>
 				<br>
 				<button class="button2 butt">GO TO CONTACT PAGE</button>
 			</div>
-			<!-- COL3 ENDS -->
-			
-			<!-- COL4 STARTS -->
-			<div class="col-md-3">
-				<img src="images/detailsquare1.jpg" height="75" width="75"> &nbsp;
-				<img src="images/detailsquare2.jpg" height="75" width="75">&nbsp;
-				<img src="images/detailsquare3.jpg" height="75" width="75"> &nbsp;
-				<br><br>
-				<img src="images/detailsquare1.jpg" height="75" width="75"> &nbsp;
-				<img src="images/detailsquare2.jpg" height="75" width="75">&nbsp;
-				<img src="images/detailsquare3.jpg" height="75" width="75"> &nbsp;
-			</div>
-			<!-- COL4 ENDS -->
-		
-		</div>
-		<!-- Row 5 ends -->
-		
-		
-		
-		<!-- Row6 Starts -->
-		<div class="row last">
-		
-	
-			
+			<!-- ROW 5 COL 3 ENDS -->
 
-			
-			<!-- COL1 STARTS -->
+			<!-- ROW 5 COL 4 STARTS -->
+			<div class="col-md-3">
+				<img src="images/detailsquare1.jpg" height="75" width="75">
+				&nbsp; <img src="images/detailsquare2.jpg" height="75" width="75">&nbsp;
+				<img src="images/detailsquare3.jpg" height="75" width="75">
+				&nbsp; <br>
+				<br> <img src="images/detailsquare1.jpg" height="75" width="75">
+				&nbsp; <img src="images/detailsquare2.jpg" height="75" width="75">&nbsp;
+				<img src="images/detailsquare3.jpg" height="75" width="75">
+				&nbsp;
+			</div>
+			<!-- ROW 5 COL 4 ENDS -->
+
+		</div>
+		<!-- ROW 5 ENDS -->
+
+
+
+		<!-- ROW 6 STARTS -->
+		<div class="row last">
+
+
+
+
+
+			<!-- ROW 6 COL1 STARTS -->
 			<div div class="col-md-3 cc">
 				<br>
-				<p style="color: white;"><span class="glyphicon glyphicon-copyright-mark"> 2018</span>
-				TechAspect Solutions Private Limited
+				<p style="color: white;">
+					<span class="glyphicon glyphicon-copyright-mark"> 2018</span>
+					TechAspect Solutions Private Limited
 			</div>
-			<!-- COL1 ENDS -->
-			
-		
+			<!-- ROW 6 COL1 ENDS -->
+
+
 		</div>
-		<!-- Row ends -->
-	
-	
+		<!-- ROW 6 ENDS -->
+
+		<!-- FOOTER ENDS -->
 	</div>
-	
+
 	<script src="js/jquery-3.3.1.js"></script>
 	<script src="bootstrap/js/bootstrap.js"></script>
 </body>
