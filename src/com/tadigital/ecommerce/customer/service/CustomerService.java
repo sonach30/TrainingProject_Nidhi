@@ -41,12 +41,17 @@ public class CustomerService {
 	//CHECKING STATUS FOR INSERT QUERY FOR CHECKING THE REGISTRATION PROCESS SUCCESS
 	public boolean registerCustomer(Customer customer) {
 		
+		//GETTING STATUS FOR INSERT QUERY FROM CUSTOMERDAO 
 		boolean status = customerDao.insertCustomer(customer);
+		
+		//IF REGISTRATION IS SUCCESSFUL THEN SEND A WELCOME MAIL
 		if(status)
 		{
+			// SENDING A WELCOME MAIL
 			sendWelcomeMail(customer.getCust_fname() + " " + customer.getCust_lname(), customer.getCust_email());
 		}
 		
+		//RETURNING THE STATUS 
 		return status;
 	}
 	
@@ -54,15 +59,16 @@ public class CustomerService {
 	//CHECKING THE STATUS FOR SELECT QUERY FOR CHECKING THE LOGIN PROCESS SUCCESS
 	public boolean loginCustomer(Customer customer)
 	{
-		boolean status = customerDao.selectEmployeeByEmailAndPassword(customer);
+		//GETTING STATUS FOR SELECT QUERY FROM CUSTOMERDAO 
+		boolean status = customerDao.selectCustomerByEmailAndPassword(customer);
+		
+		//RETURNING THE STATUS
 		return status;
 	}
 	
 	
 	
 	//SENDING MAIL ON SUCCESSFUL RESGISTRATION
-	
-	
 	public String sendWelcomeMail(String name, String email) {
 		String status = "NOT SENT";
 		
@@ -88,11 +94,11 @@ public class CustomerService {
 			mimeMessage.setRecipients(Message.RecipientType.TO,	InternetAddress.parse(email));
 			MimeMultipart mp = new MimeMultipart();
 			MimeBodyPart mbp1= new MimeBodyPart();
-			String msg ="<body bgcolor='white'>Dear <i><font color='blue'>" + name + "</font></i>,<br/><br/>" +
-					 "<img src='cid:image1'><br/><h2><font color='red'>Welcome to the GANG!!</font></h2>" +
+			String msg ="Hi,<body bgcolor='white'>Dear <i>" + name + "</font></i>,<br/><br/>" +
+					 "<img src='cid:image1'><br/><h2><font color='blue' font-family='Comic Sans MS'><b>Welcome to the our Family!!</b></font></h2>" +
 					 "<br/><font color='cyan'>We are to glad to you have you on-board</font>" +
 					 "<br/><br/><br/><font color='green'>Keep Updated by visiting the webpage regularly for new offers and discounts</font>" +
-					 "<br/><br/><br/><font color='red'>Happy Ecommercing!!!<br/>TA Digital<br/><br/></font><img src='cid:image'></body>";
+					 "<br/><br/><br/><font color='red'>Happy Shopping!!!<br/>TA Digital<br/><br/></font><img src='cid:image'></body>";
 			mbp1.setContent(msg,"text/html");
 			mp.addBodyPart(mbp1);
 			
@@ -103,7 +109,7 @@ public class CustomerService {
 			mp.addBodyPart(mbp1);
 			
 			mbp1 = new MimeBodyPart();
-			fds = new FileDataSource("D:/Trainee Engineer March 2019/workspace/TrainingProject_Nidhi/WebContent/images/product1.jpg");
+			fds = new FileDataSource("D:/Trainee Engineer March 2019/workspace/TrainingProject_Nidhi/WebContent/images/WELCOME.jpg");
 			mbp1.setDataHandler(new DataHandler(fds));
 			mbp1.setHeader("Content-ID", "<image1>");
 			mp.addBodyPart(mbp1);
