@@ -56,7 +56,7 @@ import com.tadigital.ecommerce.customer.entity.Customer;
 		
 		
 		
-		//FUNCTION FOR INSERTING IN THE customer_details
+		//FUNCTION FOR INSERTING IN THE customer_details(First Name, Last Name, Email, Password)
 		//RETURN THE STATUS FOR INSERTING QUERY
 		public boolean insertCustomer(Customer customer) {
 			boolean status = false;
@@ -87,4 +87,65 @@ import com.tadigital.ecommerce.customer.entity.Customer;
 		}
 		
 		
-}
+		
+		
+		public boolean updateCustomerById(Customer customer)
+		{
+			boolean status = false;
+			Connection con = openConnection();
+			Statement stmt = openStatement(con);
+			ResultSet rs = null;
+			
+			try {
+				
+				
+				String sql = "UPDATE customer_details SET cust_gender = '" + customer.getCust_gender() +"', cust_address='" +customer.getCust_address()+"', cust_city='" +customer.getCust_city()+"',  cust_zip='"+customer.getCust_zip()+"',cust_state='"+customer.getCust_state()+"' ,cust_country='"+customer.getCust_country()+"',cust_number='"+customer.getCust_number()+"' WHERE cust_id='"+customer.getCust_id()+"'";
+				int row = stmt.executeUpdate(sql);
+				if(row!=0) {
+					status = true;
+					
+				}
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			} finally {
+				closeStatement(stmt);
+				closeResultSet(rs);
+				closeConnection(con);
+			}
+			
+			return status;
+			
+		}
+		
+		
+		
+		
+		public boolean updateCustomerPasswordById(Customer customer)
+		{
+			boolean status = false;
+			Connection con = openConnection();
+			Statement stmt = openStatement(con);
+			
+	try {
+				
+				//UPDATE customer_information SET cust_gender=customer.getGender(), cust_address=customer.getAddress(), cust_city=customer.getCity,  cust_zip=customer.getZip(),
+				//cust_state=customer.getState(), cust_country=customer.getCountry
+				String sql = "UPDATE customer_detail SET cust_password = '" + customer.getCust_password() +"' WHERE cust_id='"+customer.getCust_id()+"'";
+				int row = stmt.executeUpdate(sql);
+				if(row!=0) {
+					status = true;
+					
+				}
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			} finally {
+				closeStatement(stmt);
+				closeConnection(con);
+			}
+			
+			return status;
+			
+		
+		
+		}
+	}
