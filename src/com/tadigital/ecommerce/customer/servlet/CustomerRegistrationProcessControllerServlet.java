@@ -53,7 +53,8 @@ public class CustomerRegistrationProcessControllerServlet extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("SignInSignUpForms.jsp");
 			rd.forward(req, resp);
 			
-		} else {
+		}
+		else {
 			HttpSession session = req.getSession();
 			session.setAttribute("SUCCESS", -1);
 			RequestDispatcher rd = req.getRequestDispatcher("SignInSignUpForms.jsp");
