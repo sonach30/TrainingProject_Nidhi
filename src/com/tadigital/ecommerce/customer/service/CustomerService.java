@@ -67,6 +67,96 @@ public class CustomerService {
 	}
 	
 	
+	public boolean updateCustomer(Customer customer)
+	{
+		//GETTING STATUS FOR SELECT QUERY FROM CUSTOMERDAO 
+		boolean status = customerDao.updateCustomerById(customer);
+		
+		if(status)
+		{
+			// SENDING A WELCOME MAIL
+			sendUpdatePasswordMail(customer.getCust_fname() + " " + customer.getCust_lname(), customer.getCust_email());
+		}
+		//RETURNING THE STATUS
+		return status;
+	}
+	
+	
+	public boolean updatePassword(Customer customer)
+	{
+		//GETTING STATUS FOR SELECT QUERY FROM CUSTOMERDAO 
+		boolean status = customerDao.updateCustomerPasswordById(customer);
+		
+		//RETURNING THE STATUS
+		return status;
+	}
+	
+
+	
+	//SENDING MAIL ON SUCCESSFUL RESGISTRATION
+	public String sendUpdatePasswordMail(String name, String email) {
+		String status = "NOT SENT";
+		
+		//MAIL SERVER CONFIGURATION
+		Properties properties = new Properties();
+		properties.put("mail.smtp.host", "smtp.gmail.com");
+		properties.put("mail.smtp.socketFactory.port", "465");
+		properties.put("mail.smtp.socketFactory.class",	"javax.net.ssl.SSLSocketFactory");
+		properties.put("mail.smtp.auth", "true");
+		properties.put("mail.smtp.port", "465");
+		
+		//CONNECT TO MAIL SERVER
+		Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
+																	protected PasswordAuthentication getPasswordAuthentication() {
+																		return new PasswordAuthentication("nidhich30@gmail.com","09415882570");
+																	}
+																});
+		try {
+			//COMPOSE MESSAGE
+			MimeMessage mimeMessage = new MimeMessage(session);
+			//MimeMessageHelper helper = new MimeMessage(message, true);
+			mimeMessage.setFrom(new InternetAddress("nidhich30@gmail.com"));
+			mimeMessage.setRecipients(Message.RecipientType.TO,	InternetAddress.parse(email));
+			MimeMultipart mp = new MimeMultipart();
+			MimeBodyPart mbp1= new MimeBodyPart();
+			String msg ="Hi,<body bgcolor='white'>Dear <i>" + name + "</font></i>,<br/><br/>" +
+					 "<img src='cid:image1'><br/><h2><font color='blue' font-family='Comic Sans MS'><b>Welcome to the our Family!!</b></font></h2>" +
+					 "<br/><font color='cyan'>We are to glad to you have you on-board</font>" +
+					 "<br/><br/><br/><font color='green'>Keep Updated by visiting the webpage regularly for new offers and discounts</font>" +
+					 "<br/><br/><br/><font color='red'>Happy Shopping!!!<br/>TA Digital<br/><br/></font><img src='cid:image'></body>";
+			mbp1.setContent(msg,"text/html");
+			mp.addBodyPart(mbp1);
+			
+			mbp1 = new MimeBodyPart();
+			DataSource fds = new FileDataSource("D:/Trainee Engineer March 2019/workspace/TrainingProject_Nidhi/WebContent/images/logo.png");
+			mbp1.setDataHandler(new DataHandler(fds));
+			mbp1.setHeader("Content-ID", "<image>");
+			mp.addBodyPart(mbp1);
+			
+			mbp1 = new MimeBodyPart();
+			fds = new FileDataSource("D:/Trainee Engineer March 2019/workspace/TrainingProject_Nidhi/WebContent/images/WELCOME.jpg");
+			mbp1.setDataHandler(new DataHandler(fds));
+			mbp1.setHeader("Content-ID", "<image1>");
+			mp.addBodyPart(mbp1);
+				
+			mimeMessage.setContent(mp);
+
+			//SEND MAIL
+			Transport.send(mimeMessage);
+			
+			status = "SENT";
+		} catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
+		
+		return status;
+	}
+	
+	
+	
+	
+	
+	
 	
 	//SENDING MAIL ON SUCCESSFUL RESGISTRATION
 	public String sendWelcomeMail(String name, String email) {
