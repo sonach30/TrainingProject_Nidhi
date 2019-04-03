@@ -10,7 +10,7 @@ public class Customer {
 	private String cust_gender;
 	private String cust_address;
 	private String cust_city;
-	private String cust_zip;
+	private Long cust_zip;
 	private String cust_state;
 	private String cust_country;
 	private int cust_number;
@@ -19,7 +19,7 @@ public class Customer {
 	{
 		
 	}
-	public Customer(int cust_id,String cust_fname,String cust_lname,String cust_email,String cust_password,String cust_gender,String cust_address,String cust_city,String cust_zip,String cust_state,String cust_country,int cust_number)
+	public Customer(int cust_id,String cust_fname,String cust_lname,String cust_email,String cust_password,String cust_gender,String cust_address,String cust_city,Long cust_zip,String cust_state,String cust_country,int cust_number)
 	{
 		//ASSIGNING VALUES TO CUSTOMER FIELDS
 		this.cust_id = cust_id;
@@ -61,7 +61,7 @@ public class Customer {
 	public void setCust_city(String cust_city) {
 		this.cust_city = cust_city;
 	}
-	public void setCust_zip(String cust_zip) {
+	public void setCust_zip(Long cust_zip) {
 		this.cust_zip = cust_zip;
 	}
 	public void setCust_state(String cust_state) {
@@ -105,7 +105,7 @@ public class Customer {
 		return cust_city;
 	}
 	
-	public String getCust_zip() {
+	public Long getCust_zip() {
 		return cust_zip;
 	}
 	
@@ -120,6 +120,7 @@ public class Customer {
 	public int getCust_number() {
 		return cust_number;
 	}
+	
 	
 	
 };
