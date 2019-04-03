@@ -30,6 +30,10 @@ public class CustomerLoginControllerServlet extends HttpServlet {
 		// CALLING THE SERVICE METHOS TO GET STATUS FOR LOGIN
 		CustomerService customerService = new CustomerService();
 		boolean status = customerService.loginCustomer(customer);
+		
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("CUSTOMERDATA", customer);
 		if (status) {
 			HttpSession ses = req.getSession();
 			ses.setAttribute("SUCCESS", 2);
