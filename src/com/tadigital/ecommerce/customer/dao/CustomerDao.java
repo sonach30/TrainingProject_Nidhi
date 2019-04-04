@@ -25,7 +25,6 @@ import com.tadigital.ecommerce.customer.entity.Customer;
 			
 			try {
 				String sql = "SELECT * FROM customer_details WHERE cust_email = '" + customer.getCust_email() + "' AND cust_password = '" + customer.getCust_password() + "'";
-				
 				rs = stmt.executeQuery(sql);
 				
 				//SETTING VALUES FOR CUSTOMER ID FIRSTNAME AND LASTNAME 
@@ -88,9 +87,8 @@ import com.tadigital.ecommerce.customer.entity.Customer;
 		
 		
 		
-		
-		public boolean updateCustomerById(Customer customer)
-		{
+		//SETTING THE CUSTOMER DETAILS
+		public boolean updateCustomerById(Customer customer) {
 			boolean status = false;
 			Connection con = openConnection();
 			Statement stmt = openStatement(con);
@@ -98,12 +96,10 @@ import com.tadigital.ecommerce.customer.entity.Customer;
 			
 			try {
 				
-				
 				String sql = "UPDATE customer_details SET cust_gender = '" + customer.getCust_gender() +"', cust_address='" +customer.getCust_address()+"', cust_city='" +customer.getCust_city()+"',  cust_zip='"+customer.getCust_zip()+"',cust_state='"+customer.getCust_state()+"' ,cust_country='"+customer.getCust_country()+"',cust_number='"+customer.getCust_number()+"' WHERE cust_id='"+customer.getCust_id()+"'";
 				int row = stmt.executeUpdate(sql);
 				if(row!=0) {
-					status = true;
-					
+					status = true;	
 				}
 			} catch (SQLException sqle) {
 				sqle.printStackTrace();
@@ -111,27 +107,27 @@ import com.tadigital.ecommerce.customer.entity.Customer;
 				closeStatement(stmt);
 				closeResultSet(rs);
 				closeConnection(con);
-			}
+			  }
 			
 			return status;
-			
 		}
 		
 		
 		
-		
-		public boolean updateCustomerPasswordById(Customer customer)
-		{
+		//CHANGING THE PASSWORD
+		public boolean updateCustomerPasswordById(Customer customer) {
 			boolean status = false;
+			
 			Connection con = openConnection();
 			Statement stmt = openStatement(con);
 			
-	try {
+			try {
 				
 				//UPDATE customer_information SET cust_gender=customer.getGender(), cust_address=customer.getAddress(), cust_city=customer.getCity,  cust_zip=customer.getZip(),
 				//cust_state=customer.getState(), cust_country=customer.getCountry
-				String sql = "UPDATE customer_detail SET cust_password = '" + customer.getCust_password() +"' WHERE cust_id='"+customer.getCust_id()+"'";
+				String sql = "UPDATE customer_details SET cust_password = '" + customer.getCust_password() +"' WHERE cust_id='"+customer.getCust_id()+"'";
 				int row = stmt.executeUpdate(sql);
+			
 				if(row!=0) {
 					status = true;
 					
@@ -144,8 +140,67 @@ import com.tadigital.ecommerce.customer.entity.Customer;
 			}
 			
 			return status;
-			
-		
-		
 		}
+		
+		
+		
+		//SETTING COOKIE END TIME
+		public boolean selectCookie(Customer customer) {
+			
+			boolean status = false;
+			
+			Connection con = openConnection();
+			Statement stmt = openStatement(con);
+			
+			try {	
+				//UPDATE customer_information SET cust_gender=customer.getGender(), cust_address=customer.getAddress(), cust_city=customer.getCity,  cust_zip=customer.getZip(),
+				//cust_state=customer.getState(), cust_country=customer.getCountry
+				String sql = "SELECT * FROM user_information WHERE usr_email=? and usr_lltime=?";
+			    int row = stmt.executeUpdate(sql);
+				
+				if(row!=0) {
+					
+					status = true;	
+				}
+				
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			} finally {
+				closeStatement(stmt);
+				closeConnection(con);
+			}
+			
+			return status;
+		}
+		
+	
+
+		//SELECT QUERY FOR COOKIE
+		public boolean updateCookieTime(Customer customer) {
+			boolean status = false;
+			
+			Connection con = openConnection();
+			Statement stmt = openStatement(con);
+			
+			try {
+				
+				//UPDATE customer_information SET cust_gender=customer.getGender(), cust_address=customer.getAddress(), cust_city=customer.getCity,  cust_zip=customer.getZip(),
+				//cust_state=customer.getState(), cust_country=customer.getCountry
+				String sql = "UPDATE customer_details SET cust_lltime = '" + customer.getCust_lltime() +"' WHERE cust_email='"+customer.getCust_email()+"'";
+				int row = stmt.executeUpdate(sql);
+				
+				if(row!=0) {
+					
+					status = true;
+					
+				}
+			} catch (SQLException sqle) {
+				sqle.printStackTrace();
+			} finally {
+				closeStatement(stmt);
+				closeConnection(con);
+			}
+			
+			return status;
+		}		
 	}
