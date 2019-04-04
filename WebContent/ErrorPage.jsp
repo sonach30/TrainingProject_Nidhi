@@ -24,117 +24,95 @@
 	<body>
 		<!-- CONTAINER STARTS -->
 		<div class="container-fluid">
-		
-			<!-- ROW1 STARTS -->
-			<div class="row row1" id="">
-			<br>
-			
-				
-				<!-- COL1 STARTS -->
-				<div class="col-md-7 cc">
-					Contact Us on +91 40 6617777
-					<br>
-				</div>
-				<!-- COL1 ENDS -->
-				
-				<!-- COL2 STARTS -->
-				<div class="col-md-2">
-					<span class="glyphicon">&#xe161;</span>
-					SIGN IN&nbsp;
-					<span class="glyphicon">&#xe008;</span>
-		 			SIGN UP
-		 		</div>
-		 		<!-- COL2 ENDS -->
-		 		
-		 		<!-- COL3 STARTS -->
-		 		<div class="col-md-1 mrsil">
-		 			<i style="font-size:15px" class="fa">&#xf09a;</i>&nbsp;
-		 			<i style="font-size:15px" class="fa">&#xf0d5;</i>&nbsp;
-		 			<i style="font-size:15px" class="fa">&#xf099;</i>&nbsp;
-		 			<i style='font-size:15px' class='fas'>&#xf0e0;</i>&nbsp;
-		 			
-		 		</div>
-		 		<!-- COL3 ENDS -->
-		 	
-		 	<br><br>	
-		 	
-		 	</div>
-		 	<!-- ROW 1 ENDS -->
-		 	
-		 	
-		 	
-		 	<!-- ROW 2 STARTS -->
-	 		<div class="row row2">
-	 			
-	 			<!-- COL 1 STARTS -->
-	 			<div class="col-md-4 cc">
-	 				<br>
-					<img src="images/logo.png">
-					<br>
-				</div>
-				<!-- COL 1 ENDS -->
-				
-				
-				<!-- COL2 STARTS -->
-				<div class="col-md-6 cccc">
-					<br>
-  					<div class="dropdown">
-  						<button class="btn btn-default dropdown-toggle menu" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    						ELECTRONICS
-    						<span class="caret"></span>
-  						</button>
-  						<button class="btn btn-default dropdown-toggle menu" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    						MEN
-    						<span class="caret"></span>
-  						</button>
-  						<button class="btn btn-default dropdown-toggle menu" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    						WOMEN
-    						<span class="caret"></span>
-  						</button>
-  						<button class="btn btn-default dropdown-toggle menu" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    						BABY & KIDS
-    						<span class="caret"></span>
-  						</button>
-  						<button class="btn btn-default dropdown-toggle menu" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    						HOME & FURNITURE
-    						<span class="caret"></span>
-  						</button>
-  						<br>
-  						<br>
-					</div>
-				</div>
-				<!-- COL2 ENDS -->
-			
+		<!-- Row 1 Starts -->
+		<div class="row" id="row1">
+			<!-- <div class="col-md-1"></div> -->
+			<!-- Row 1 Column 2 -->
+			<div class="col-md-6 mar" id="r1_c2">
+				<p id="r1_c4">Contact Us on +91 4066217777</p>
 			</div>
-			<!-- ROW2 ENDS -->
-			
-			
-			
-			<!-- ROW3 STARTS -->
-			<div class="row row3" style="background-image:url(images/texture-bw.png)">
+
+			<!-- Row 1 Column 4 -->
+			<div class="col-md-1 mar" id="r1_c4">
+				<span class="glyphicon glyphicon-log-in style="> SIGN IN</span>
+			</div>
+			<!-- Row 1 Column 5 -->
+			<div class="col-md-1" id="r1_c5">
+				<span class="glyphicon glyphicon-user"> SIGN UP</span>
+			</div>
+			<!-- Row 1 Column 6 Icons -->
+			<div class="col-md-2" id="r1_c6_1">
+
+				<span> <i class="fa fa-facebook"></i>
+				</span> <span id="r1_c6_2"><i class="fa fa-google-plus"></i></span> <span
+					id="r1_c6_2"><i class="fa fa-twitter"></i></span> <i
+					style='font-size: 15px' class='fas'>&#xf0e0;</i>&nbsp;
+
+			</div>
+		</div>
+		<!-- Row 1 Ends -->
+
+
+		<!-- Row 2 Starts -->
+		<div class="row">
+			<!-- <div class="col-md-1"></div> -->
+			<!-- Row 2 Column2 -->
+			<div class="col-md-4 mar">
+				<img src="images/logo.png" id="r2_c2">
+			</div>
+			<!-- <div class="col-md-3"></div> -->
+			<!-- Row 2 Column4 -->
+			<div class="col-md-6 mar">
+				<div class="dropdown">
+					<button class="btn btn-primary dropdown-toggle r2_c4" type="button"
+						data-toggle="dropdown">
+						ELECTRONICS <span class="caret"></span>
+					</button>
+					<button class="btn btn-primary dropdown-toggle r2_c4" type="button"
+						data-toggle="dropdown">
+						MEN <span class="caret"></span>
+					</button>
+					<button class="btn btn-primary dropdown-toggle r2_c4" type="button"
+						data-toggle="dropdown">
+						WOMEN <span class="caret"></span>
+					</button>
+					<button class="btn btn-primary dropdown-toggle r2_c4" type="button"
+						data-toggle="dropdown">
+						BABY & KIDS <span class="caret"></span>
+					</button>
+					<button class="btn btn-primary dropdown-toggle r2_c4" type="button"
+						data-toggle="dropdown">HOME & FURNITURE</button>
+					<span class="caret"></span>
+				</div>
+			</div>
+		</div>
+		<!-- Row 2 Ends -->
+
+		<!-- Row 3 Starts -->
+		<div class="row row3"
+			style="background-image: url(images/texture-bw.png)">
+			<br>
+
+			<!-- COL1 STARTS -->
+			<div class="col-md-4 cc">
+				<b class="lbl1">NEW ACCOUNT / SIGN IN</b> <br>
+			</div>
+			<!-- COL1 ENDS -->
+
+
+			<!-- COL2 STARTS -->
+			<div class="col-md-4 ccrr">
+				<h5>
+					<a class="links">HOME</a> / NEW ACCOUNT / SIGN IN
+				</h5>
 				<br>
-				
-				<!-- COL1 STARTS -->
-				
-				<div class="col-md-4 cc">
-					<b class="lbl1">Error  Page</b>
-					<br>
-				</div>
-				<!-- COL1 ENDS -->
-				
-				
-				<!-- COL2 STARTS -->
-				<div class="col-md-4 ccrr">
-					<h5><a class="links">Home</a> / Error  Page</h5>
-					<br>
-				</div>
-				<!-- COL2 ENDS -->
-				
-			<br>
-			<br>
-			
 			</div>
-			<!-- ROW 3 ENDS -->
+			<!-- COL2 ENDS -->
+
+			<br> <br>
+
+		</div>
+		<!-- Row 3 Ends -->
 			
 			<br><br>
 			
@@ -142,9 +120,12 @@
 				<div class="row ep_row4" >
 					<div class="ep_box"><p id="ep_box_p"><strong>Sorry for Inconvenience-Page You are looking for <br>does not exist</strong></p><br>
 					<p class="mrgrey"><b>Seems like you have tried to write or modify the URL.Use only Navigation Links provided on web page</b></p>
-					</div>
-					<br><span class="glyphicon glyphicon-home"> Home</span>
-				</div>			
+					
+					<form action="index.jsp">
+					<br><button type="submit" class="ep_sub3"><span class="glyphicon glyphicon-home"> Home</span></button><br>
+					</form>
+				</div>
+			</div>				
 			<!-- ROW 4 ENDS -->
 	 	<!-- ROW 6 STARTS -->
 	 	<br><div class="row row1">
