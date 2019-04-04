@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+	<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -24,6 +26,23 @@
 
 </head>
 <body>
+	<%
+	//READ COOKIES FROM REQUEST
+		Cookie[] allCookies = request.getCookies();
+		if(allCookies != null) {
+			//SEARCH YOUR WEBSITE COOKIE
+			for(Cookie cookie : allCookies) {
+				String cName = cookie.getName();
+				if(cName.equals("abc")) {
+					String cValue = cookie.getValue();
+					session.setAttribute("COOKIEVALUE", cValue);
+					response.sendRedirect("log");
+					break;
+			}
+		}
+	}
+		
+	%>
 	<div class="container-fluid">
 		<!-- Row 1 Starts -->
 		<div class="row" id="row1">
@@ -160,8 +179,8 @@
 						//CHECKING IF SESSION ALREADY EXIST
 						if(!session.isNew())
 						{
-							 int i = (int)session.getAttribute("SUCCESS");
-							if(i==1)
+							 String i = (String)session.getAttribute("SUCCESS");
+							if(i=="successregister")
 							{	
 					%>
 					<!-- IF REGITRATION SUCCESSFUL -->
@@ -169,7 +188,7 @@
 					Successful</div>
 				<% 
 							}
-							else if(i==-1)
+							else if(i=="failregister")
 							{
 					%>
 					
@@ -210,21 +229,25 @@
 					</div>
 					<button type="submit" class="btn btn-default"
 						style="margin-left: 200px; color: green;">LOG IN</button>
+						
+					<br><br>
+					
+					<input type="checkbox" name="ss" value="ss"> Stay Signed In
 					<hr>
 				</form>
 				<!-- LOGIN FORM ENDS -->
 				<%	
 						if(!session.isNew())
 						{
-							 int i = (int)session.getAttribute("SUCCESS");
-							if(i==2)
+							String i = (String)session.getAttribute("SUCCESS");
+							if(i=="successlogin")
 							{	
 					%>
 				<div class="alert alert-success" role="alert">Login Successful
 				</div>
 				<% 
 							}
-							else if(i==-2)
+							else if(i=="faillogin")
 							{
 					%>
 				<div class="alert alert-danger" role="alert">
@@ -329,7 +352,7 @@
 
 		<!-- FOOTER ENDS -->
 	</div>
-
+	
 	<script src="js/jquery-3.3.1.js"></script>
 	<script src="bootstrap/js/bootstrap.js"></script>
 </body>
