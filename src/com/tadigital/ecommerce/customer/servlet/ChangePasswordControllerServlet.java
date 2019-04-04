@@ -18,71 +18,74 @@ import com.tadigital.ecommerce.customer.service.CustomerService;
 @WebServlet("/ChangePassword")
 public class ChangePasswordControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ChangePasswordControllerServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public ChangePasswordControllerServlet() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		Customer customer = new Customer();
-		
-		
+
 		HttpSession ses = request.getSession(); // Session object required?
-		customer=(Customer)ses.getAttribute("CUSTOMERDATA");
-		
-		
+		customer = (Customer) ses.getAttribute("CUSTOMERDATA");
+
 		String oldPasswordForm = request.getParameter("f1");
 		String newPasswordForm = request.getParameter("f2");
 		String newpasswordRetypeForm = request.getParameter("f3");
-		String currPassword =  customer.getCust_password(); 
-		
-		
-		System.out.println(oldPasswordForm + newPasswordForm + newpasswordRetypeForm + currPassword );
-		
-		if( currPassword.equals(oldPasswordForm) && newPasswordForm.equals(newpasswordRetypeForm))
-		{
+		String currPassword = customer.getCust_password();
+
+		// COMPARING THE OLD PASSWORD WITH PASSWORD FROM DATABASE AND NEW AND RETYPE
+		// PASSWORD
+		if (currPassword.equals(oldPasswordForm) && newPasswordForm.equals(newpasswordRetypeForm)) {
+
 			customer.setCust_password(newPasswordForm);
+
+			// GETTING THE STATUS OF UPDATE QUERY VIA CUSTOMERSERVICE
 			CustomerService customerService = new CustomerService();
-			boolean status=customerService.updatePassword(customer);
-			if(status) {
-				ses.setAttribute("SUCCESS", 3);
-				System.out.println("Password Updated Succesfully!");
+			boolean status = customerService.updatePassword(customer);
+
+			if (status) {
+
+				ses.setAttribute("SUCCESS", "successpass");
 				RequestDispatcher rd = request.getRequestDispatcher("CustomerAccount.jsp");
 				rd.forward(request, response);
+
 			} else {
-				ses.setAttribute("SUCCESS", -3);
-				System.out.println("Error Updating the Password!!");
+
+				ses.setAttribute("SUCCESS", "failpass");
 				RequestDispatcher rd = request.getRequestDispatcher("CustomerAccount.jsp");
-				rd.forward(request, response);
+
+				try {
+
+					rd.forward(request, response);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			
-		}
-		else
-		{
-			ses.setAttribute("SUCCESS", -3);
-			System.out.println("Error Updating the Password!!");
+
+		} else {
+
+			ses.setAttribute("SUCCESS", "failpass");
 			RequestDispatcher rd = request.getRequestDispatcher("CustomerAccount.jsp");
-			rd.forward(request, response);
-			System.out.println("Passwords donot match or wrong old password!");
+			try {
+
+				rd.forward(request, response);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		doGet(request, response);
 	}
 
 }
