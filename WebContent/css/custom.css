@@ -32,6 +32,9 @@
 	padding-top:5px;
 	
 }
+
+
+/***********ROW 2 CSS*****************/
 #r2_c2
 {
 	margin-top:20px;
@@ -1509,11 +1512,11 @@ list-style: none;
   transform: translate(-75%, 0) !important;
 }
 /********************Error Page***********************/
-.ep_box
+/*.ep_box
 {
 	margin-left:500px;
 	text-align:center;
-	/* text-align:center;  */
+	text-align:center; 
 	border-style: solid;
 	border-width:2px;
   	border-color: gray white gray white; 
@@ -1528,7 +1531,7 @@ list-style: none;
 	font-size:20px;
 }
 
-/**************************EXCEPTION************************/
+*************************EXCEPTION***********************
 .exec_init_margin
 {
 	margin-left: 200px;
@@ -1563,14 +1566,91 @@ list-style: none;
 
 
 .btn2 {
-	background-color: white; /* Blue background */
-	border: none; /* Remove borders */
-	color: #00f0f0; /* White text */
-	padding: 10px 12px; /* Some padding */
-	font-size: 12px; /* Set a font size */
-	cursor: pointer; /* Mouse pointer on hover */
+	background-color: white; Blue background
+	border: none; Remove borders
+	color: #00f0f0; White text
+	padding: 10px 12px; Some padding
+	font-size: 12px; Set a font size
+	cursor: pointer; Mouse pointer on hover
 	margin-top: 10px;
-	/*   margin-right:240px;
- */ 
+	  margin-right:240px;
+ 
 	border: 3px solid #00f0f0;
+}
+ */
+ 
+ 
+ /*************************************************************/
+ .ep_row4
+{
+	 margin-left:-100px;
+	text-align: center;
+	/* margin-right: 400px; */
+}
+.ep_box
+{
+	margin-left:400px;
+	text-align:center;
+	/* text-align:center;  */
+	border-style: solid;
+	border-width:2px;
+  	border-color: gray white gray white; 
+	width:800px;
+}
+.ep_sub3
+{
+	
+	margin-left: 0px;
+	color:#4fbfa8;
+	border-color: #4fbfa8;
+	background-color: white;
+	margin-bottom:10px;
+	
+}
+.ep_sub4
+{
+	
+	margin-left: 250px;
+	color:#4fbfa8;
+	border-color: #4fbfa8;
+	background-color: white;
+	
+}
+.ep_sub5
+{
+	
+	margin-right: 250px;
+	color:#4fbfa8;
+	border-color: #4fbfa8;
+	background-color: white;
+	
+}
+#ep_box_p
+{
+	font-size:22px;
+}
+.ep_grey{
+	color:#c7c7c7;
+	font-size:16px;
+}
+.excep_mar_butt
+{
+	margin-left:100px;
+}
+.excep_mar_butt
+{
+	margin-right:100px;
+}
+.excep
+{
+	margin-left:300px;
+	margin-right:200px;
+}
+.ep_sub6
+{
+	/* margin-left:500px !important; */
+}
+.ep_sub7
+{
+	/* margin-bottom:100px !important; */
 }
