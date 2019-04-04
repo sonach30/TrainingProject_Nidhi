@@ -19,42 +19,36 @@ import com.tadigital.ecommerce.customer.service.CustomerService;
 @WebServlet("/CustomerAccount")
 public class CustomerAccountControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CustomerAccountControllerServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+	public CustomerAccountControllerServlet() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
+
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
+
 		Customer customer = new Customer();
-		customer=(Customer)session.getAttribute("CUSTOMERDATA");
-		String email=customer.getCust_email();
-		String password=customer.getCust_password();
-		String gender=request.getParameter("f6");
-		String address=request.getParameter("f7");
+		customer = (Customer) session.getAttribute("CUSTOMERDATA");
+
+		String gender = request.getParameter("f6");
+		String address = request.getParameter("f7");
 		String city = request.getParameter("f8");
-		long zip = Long.parseLong(request.getParameter("f9"));
+		Long zip = Long.parseLong(request.getParameter("f9"));
 		String state = request.getParameter("f10");
 		String country = request.getParameter("f11");
 		Integer contact = Integer.parseInt(request.getParameter("f12"));
-		
-		
+
 		customer.setCust_gender(gender);
 		customer.setCust_address(address);
 		customer.setCust_city(city);
@@ -62,26 +56,38 @@ public class CustomerAccountControllerServlet extends HttpServlet {
 		customer.setCust_state(state);
 		customer.setCust_country(country);
 		customer.setCust_number(contact);
-		
+
 		CustomerService customerService = new CustomerService();
-		
 		boolean status = customerService.updateCustomer(customer);
-		if(status) {
-			/*HttpSession session = request.getSession();*/
+
+		if (status) {
+
+			/* SETTING CUSTOMER DATA INTO SESSION VARIABLE FORM CUSTOMER ENTITY */
 			session.setAttribute("CUSTOMERFULLDATA", customer);
-			session.setAttribute("SUCCESS", 3);
+
+			/* SETTING SESSION VARIABLE FOR SUCCESSFUL UPDATE */
+			session.setAttribute("SUCCESS", "successupdate");
 			RequestDispatcher rd = request.getRequestDispatcher("CustomerAccount.jsp");
-			System.out.println("Details Updated Succesfull");
-			rd.forward(request, response);
+
+			try {
+				rd.forward(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		} else {
-			HttpSession ses = request.getSession();
-			session.setAttribute("SUCCESS", -3);
+
+			/* SETTING SESSION VARIABLE FOR UNSUCCESSFUL UPDATE */
+			session.setAttribute("SUCCESS", "failupdate");
 			RequestDispatcher rd = request.getRequestDispatcher("CustomerAccount.jsp");
-			System.out.println("Error");
-			//Write Error Message on the screen
-			rd.forward(request, response);
+
+			try {
+				rd.forward(request, response);
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
 		}
-		
-		doGet(request, response);
+
 	}
 }
