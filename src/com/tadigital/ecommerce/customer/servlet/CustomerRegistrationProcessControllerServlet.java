@@ -21,6 +21,7 @@ public class CustomerRegistrationProcessControllerServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		String name = req.getParameter("name");
 		String email = req.getParameter("em");
 		String password = req.getParameter("pwd");
@@ -49,16 +50,28 @@ public class CustomerRegistrationProcessControllerServlet extends HttpServlet {
 		// STATUS==TRUE
 		if (status) {
 			HttpSession session = req.getSession();
-			session.setAttribute("SUCCESS", 1);
+			session.setAttribute("SUCCESS", "successregister");
 			RequestDispatcher rd = req.getRequestDispatcher("SignInSignUpForms.jsp");
-			rd.forward(req, resp);
-			
-		}
-		else {
+			try {
+
+				rd.forward(req, resp);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else {
+
 			HttpSession session = req.getSession();
-			session.setAttribute("SUCCESS", -1);
+
+			session.setAttribute("SUCCESS", "failregister");
 			RequestDispatcher rd = req.getRequestDispatcher("SignInSignUpForms.jsp");
-			rd.forward(req, resp);
+			try {
+				rd.forward(req, resp);
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
 		}
 
 	}
