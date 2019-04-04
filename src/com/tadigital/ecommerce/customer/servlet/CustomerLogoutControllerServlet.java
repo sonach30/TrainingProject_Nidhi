@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("/logout")
 public class CustomerLogoutControllerServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -35,9 +37,19 @@ public class CustomerLogoutControllerServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		//DESTROYING THE CURRENT SESSION
+		
 		session.invalidate();
-		RequestDispatcher rd = request.getRequestDispatcher("SignInSignUpForms.jsp");
-		rd.forward(request, response);
+		Cookie cookie = new Cookie("abc", "ab");
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		try {
+			rd.forward(request, response);
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+		}
 	}
 
 	
