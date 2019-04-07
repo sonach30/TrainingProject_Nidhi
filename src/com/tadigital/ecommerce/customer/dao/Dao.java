@@ -1,20 +1,36 @@
 package com.tadigital.ecommerce.customer.dao;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
+
 
 	public class Dao {
 		protected Connection openConnection() {
 			
 			Connection con = null;
 			
-			//ESTABLISHING THE DATABASE CONNECTION
+			//SETTING THE VALUES FOR DATABASE CONNECTION FROM PROPERTIES FILE 
+			Properties props = new Properties();
+			InputStream inputStream = getClass().getResourceAsStream("Dao.properties");
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tp_db", "root", "");
+				props.load(inputStream);
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}			
+			String driver = props.getProperty("cust_db_driver");
+			String database = props.getProperty("cust_db_database");
+			String root = props.getProperty("cust_db_root");
+
+			//ESTABLISHING THE DATABASE CONNECTION
+			try {				
+				Class.forName(driver);
+				con = DriverManager.getConnection(database, root, "");
 			} catch (ClassNotFoundException cnfe) {
 				cnfe.printStackTrace();
 			} catch (SQLException sqle) {
@@ -29,13 +45,10 @@ import java.sql.Statement;
 			Statement stmt = null;
 		
 			try {
-			
 				stmt = con.createStatement();
-			
 			} catch (SQLException sqle) {
 				sqle.printStackTrace();
 			}
-		
 			return stmt;
 		}
 	
