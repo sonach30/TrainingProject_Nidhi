@@ -43,6 +43,8 @@ public class CustomerLoginControllerServlet extends HttpServlet {
 		//ON SUCCESSFUL EXECUTION OF QUERY FOR LOGIN
 		if (status) {
 			
+			session.setAttribute("ALREADYlOGIN","YES");
+			
 			//IF SIGNEDIN BOX CHECKED
 			if (signedIn != null) {
 				
@@ -132,6 +134,28 @@ public class CustomerLoginControllerServlet extends HttpServlet {
 		customer.setCust_email(email);
 
 		CustomerService customerservice = new CustomerService();
-		customerservice.directcookieLogin(customer); 
+		Boolean status = customerservice.directcookieLogin(customer);
+		
+		//SEETING SESSION VARIABLE AS YES IF COOKIE ALREADY EXISTS
+		session.setAttribute("ALREADYlOGIN","YES");
+		
+		System.out.println(status);
+		
+		if(status) {
+			RequestDispatcher rd = req.getRequestDispatcher("CustomerAccount.jsp");
+			try {
+					rd.forward(req, res);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else {
+			RequestDispatcher rd = req.getRequestDispatcher("MyErrorPage.jsp");
+			try {
+					rd.forward(req, res);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
